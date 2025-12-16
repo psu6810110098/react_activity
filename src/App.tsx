@@ -2,7 +2,7 @@ import { useState } from 'react';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 import './App.css';
-import type { Note } from './types.ts';
+import type { Note } from './types';
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -15,11 +15,15 @@ function App() {
     setNotes([...notes, newNote]);
   };
 
+  const deleteNote = (id: number) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
+
   return (
     <div className="app-container">
-      <h1>Sticky Notes</h1>   
+      <h1>Sticky Notes</h1>
       <NoteForm onAdd={addNote} />
-      <NoteList notes={notes} />
+      <NoteList notes={notes} onDelete={deleteNote} />
     </div>
   );
 }
