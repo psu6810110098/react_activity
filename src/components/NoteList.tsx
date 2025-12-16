@@ -7,13 +7,11 @@ interface NoteListProps {
 function NoteList({ notes, onDelete }: NoteListProps) {
   return (
     <div className="note-list" style={{ marginTop: '20px' }}>
-      {/* เช็คว่ามี Note หรือไม่ */}
       {notes.length === 0 ? (
         <p style={{ color: '#888', fontStyle: 'italic' }}>
           No notes yet. Add one above!
         </p>
       ) : (
-        // วนลูปแสดง Note แต่ละรายการ
         notes.map((note) => (
           <div 
             key={note.id} 
@@ -32,12 +30,10 @@ function NoteList({ notes, onDelete }: NoteListProps) {
               textAlign: 'left'
             }}
           >
-            {/* ส่วนแสดงข้อความ */}
             <span style={{ marginRight: '10px', wordBreak: 'break-word' }}>
               {note.text}
             </span>
             
-            {/* ปุ่ม Delete */}
             <button 
               onClick={() => onDelete(note.id)}
               style={{
