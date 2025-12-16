@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 import './App.css';
@@ -6,6 +6,17 @@ import type { Note } from './types';
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('notes');
+    if (saved) {
+      setNotes(JSON.parse(saved) as Note[]);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]); 
 
   const addNote = (text: string) => {
     const newNote: Note = {
@@ -23,6 +34,7 @@ function App() {
     <div className="app-container">
       <h1>Sticky Notes</h1>
       <NoteForm onAdd={addNote} />
+      
       <NoteList notes={notes} onDelete={deleteNote} />
     </div>
   );
