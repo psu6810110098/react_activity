@@ -2,7 +2,7 @@ import { useState } from 'react';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 import './App.css';
-import { Note } from './Type';
+import type { Note } from './types.ts';
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
