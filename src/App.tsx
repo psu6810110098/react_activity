@@ -19,7 +19,7 @@ function App() {
     <div className="app-container">
       <h1>Sticky Notes</h1>   
       <NoteForm onAdd={addNote} />
-      <NoteList />
+      <NoteList notes={notes} />
     </div>
   );
 }
