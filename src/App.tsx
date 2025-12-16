@@ -17,9 +17,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Sticky Notes</h1>
-            <NoteForm onSubmit={addNote} />
-      <NoteList notes={notes} />
+      <h1>Sticky Notes</h1>   
+      <NoteForm onAdd={addNote} />
+      <NoteList />
     </div>
   );
 }
